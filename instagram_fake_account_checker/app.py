@@ -11,7 +11,7 @@ model = joblib.load('model/fake_account_model.pkl')
 API_URL = "https://instagram-premium-api-2023.p.rapidapi.com/v1/user/by/username"
 HEADERS = {
     "x-rapidapi-host": "instagram-premium-api-2023.p.rapidapi.com",
-    "x-rapidapi-key": "15a6d3deb3msh22eadc3669e394ep18e4d6jsnefaf0f5ff847"
+    "x-rapidapi-key": "your-rapidapi-key"
 }
 
 # ✅ Convert Instagram data to ML features
