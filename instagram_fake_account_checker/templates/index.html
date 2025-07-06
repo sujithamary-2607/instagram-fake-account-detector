@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Instagram Profile Checker</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h1>Instagram Profile Checker</h1>
+
+  <form method="POST" action="/fetch">
+    <input type="text" name="username" placeholder="Enter Instagram username" required>
+    <button type="submit">Check</button>
+  </form>
+
+  {% if error %}
+    <div class="error">{{ error }}</div>
+  {% elif profile %}
+    <div class="profile-box">
+      <h2>{{ profile.full_name }}</h2>
+      <p><strong>Username:</strong> {{ profile.username }}</p>
+      <p><strong>Bio:</strong> {{ profile.biography or "-" }}</p>
+      <p><strong>Followers:</strong> {{ profile.follower_count }}</p>
+      <p><strong>Following:</strong> {{ profile.following_count }}</p>
+      <p><strong>Verified:</strong> {{ "Yes" if profile.is_verified else "No" }}</p>
+      <p><strong>Private:</strong> {{ "Yes" if profile.is_private else "No" }}</p>
+      <p><strong>Posts:</strong> {{ profile.media_count }}</p>
+
+      {% if prediction %}
+        <p><strong>Prediction:</strong>
+          {% if prediction == 'Fake' %}
+            <span class="fake">❌ Fake Account</span>
+          {% else %}
+            <span class="real">✅ Real Account</span>
+          {% endif %}
+        </p>
+      {% endif %}
+    </div>
+  {% endif %}
+</body>
+</html>
